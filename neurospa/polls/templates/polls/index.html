@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSSLab Neurospa</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="vh-100 p-3 bg-dark text-white">
+    <div class="row">
+        <div class="col align-self-center">
+            <h1>
+                <p class="text-center">
+                    Hello, World!
+                </p>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col align-self-center" style="min-height: 40px">
+            <p class="text-center">
+                Please enter your phone number, including the country code (+1 for Canada/US):
+            </p>
+            <p class="text-center" id="message">
+                {{ number }}
+            </p>
+        </div>
+    </div>
+    <div class="row align-items-end flex-grow-1">
+        <div class="col col-sm align-self-center">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="1" data-catid="1">
+                            1
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="2" data-catid="2">
+                            2
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="3" data-catid="3">
+                            3
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="4" data-catid="4">
+                            4
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="5" data-catid="5">
+                            5
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="6" data-catid="6">
+                            6
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="7" data-catid="7">
+                            7
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="8" data-catid="8">
+                            8
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="9" data-catid="9">
+                            9
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <a href="/polls/submit" role="button" class="btn btn-success btn-lg btn-block"
+                           id="ok" data-catid="ok">
+                            Submit
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-lg btn-block" id="0" data-catid="0">
+                            0
+                        </a>
+                    </div>
+                    <div class="col align-self-center">
+                        <a href="#" role="button" class="btn btn-primary btn-block" id="del" data-catid="del"
+                           style="max-height:100%;border-top-width: 0px;border-bottom-width: 0px;padding-bottom: 0px;padding-top: 0px;">
+                            <img src="{% static 'polls/img/del.png'%}" alt="Delete"
+                                 height="100%" style="max-height:48px;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+$('.btn-primary').click(function()
+{
+    var catid;
+    catid = $(this).attr("data-catid");
+    $.ajax(
+        {
+            type:"GET",
+            url:"/polls/button",
+            data:
+            {
+                button_id:catid
+            },
+            success: function( data )
+            {
+                $('#message').text(data);
+            }
+        })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
